@@ -27,12 +27,6 @@ public class ApiController {
 
     }
 
-    // Insert u JSON obliku
-    @PostMapping("/insertProduct")
-    public ResponseEntity<Product> createProduct(@RequestBody Product product) {
-        Product createdProduct = productService.createProduct(product);
-        return new ResponseEntity<>(createdProduct, HttpStatus.CREATED);
-    }
 
     // Dohvat svih proizvoda ili filtrirano - moguce koristenje i @Pathvariable
     @GetMapping("/getProducts")
@@ -76,8 +70,13 @@ public class ApiController {
         }
     }
 
+    @PostMapping("/insertProduct")
+    public ResponseEntity<Product> createProduct(@RequestBody Product product) {
+        Product createdProduct = productService.createProduct(product);
+        return new ResponseEntity<>(createdProduct, HttpStatus.CREATED);
+    }
 
-    // za insert review-ova
+    // za insert review-ova - nije implementirano do kraja (zadatak ne traži)
 /*    @PostMapping("/reviews")
     public ResponseEntity<Review> addReview(@RequestBody Review review) {
         Review savedReview = reviewService.saveReview(review);
