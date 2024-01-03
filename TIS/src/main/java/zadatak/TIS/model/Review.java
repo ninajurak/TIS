@@ -1,5 +1,8 @@
 package zadatak.TIS.model;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+
 
 @Entity
 @Table(name = "review")
@@ -18,6 +21,8 @@ public class Review {
     private String text;
 
     @Column (name="rating")
+    @Min(1)
+    @Max(5)
     private int rating;
 
     public Long getId() {

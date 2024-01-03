@@ -32,6 +32,7 @@ public class ProductService {
             // Dohvati sve
             return productRepository.findAll();
         }
+
     }
 
     public Product createProduct(Product product) {
