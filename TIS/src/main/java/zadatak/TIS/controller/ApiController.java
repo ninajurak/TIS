@@ -34,8 +34,8 @@ public class ApiController {
         return new ResponseEntity<>(createdProduct, HttpStatus.CREATED);
     }
 
-    // Dohvat svih proizvoda ili filtrirano stavi {}/
-    @RequestMapping("/getProducts")
+    // Dohvat svih proizvoda ili filtrirano - moguce koristenje i @Pathvariable
+    @GetMapping("/getProducts")
     public ResponseEntity<List<Product>> getProducts(
             @RequestParam(required = false) String code,
             @RequestParam(required = false) String name
@@ -46,12 +46,13 @@ public class ApiController {
 
 
     // Dohvat 3 najpopularnija proizvoda
-    @GetMapping("/popular")
+    @GetMapping("/getPopular")
     public ResponseEntity<Map<String, List<PopularProductDTO>>> getTop3PopularProducts() {
         try {
+            // selecta prosijecnu ocijenu za svaki proizvod, pa u sljedecem koraku usporeduje i sortira
             List<Object[]> popularProducts = reviewService.findTop3PopularProducts();
 
-            // Sortiranje liste prema prosijeku, descending
+            // Sortiranje liste prema prosijeku, descending - Kovačević skripta lambde
             popularProducts.sort((a, b) -> Double.compare((Double) b[1], (Double) a[1]));
 
             // Dohvat samo 3 proizvoda
@@ -70,7 +71,7 @@ public class ApiController {
 
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception e) {
-            e.printStackTrace(); // logging framework
+            e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
