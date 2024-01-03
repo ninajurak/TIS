@@ -20,11 +20,11 @@ public class ReviewService {
         this.reviewRepository = reviewRepository;
     }
 
-    @Transactional
+/*    @Transactional
     public Review saveReview(Review review) {
        return reviewRepository.save(review);
 
-    }
+    }*/
 
     @Transactional
     public List<Object[]> findTop3PopularProducts() {

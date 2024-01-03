@@ -1,3 +1,4 @@
+
 package zadatak.TIS.config;
 
 import org.springframework.context.annotation.Bean;
@@ -11,3 +12,4 @@ public class AppConfig {
         return new RestTemplate();
     }
 }
+

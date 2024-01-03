@@ -34,7 +34,7 @@ public class ApiController {
         return new ResponseEntity<>(createdProduct, HttpStatus.CREATED);
     }
 
-    // Dohvat svih proizvoda ili filtrirano
+    // Dohvat svih proizvoda ili filtrirano stavi {}/
     @RequestMapping("/getProducts")
     public ResponseEntity<List<Product>> getProducts(
             @RequestParam(required = false) String code,
